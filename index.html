@@ -1,14 +1,626 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vmp/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VMP | Node-Based Next.js Framework</title>
-    <script type="module" crossorigin src="/vmp/assets/index-B8xc_Qvn.js"></script>
-    <link rel="stylesheet" crossorigin href="/vmp/assets/index-DyUy1TO_.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<!-- <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code — Глобальная настройка и приколы | Playable‑ADS стиль</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Тема в точности как в industry-guide.html — тёмный премиум */
+        :root {
+            --accent: #6C63FF;
+            --accent2: #FF6584;
+            --accent3: #43E97B;
+            --dark: #0D0D1A;
+            --dark2: #141428;
+            --card: #1A1A35;
+            --border: rgba(108, 99, 255, 0.18);
+            --text: #E8E8F0;
+            --muted: #888899;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.65;
+            font-size: 14px;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* Page container для печати A4 */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: var(--dark);
+            position: relative;
+        }
+
+        /* Общий контентный блок */
+        .content {
+            padding: 48px 50px;
+        }
+
+        /* Типографика */
+        .section-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-label::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        h1 {
+            font-size: 44px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #a09cff 60%, #6C63FF 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
+            margin: 28px 0 12px 0;
+        }
+
+        p {
+            color: #c8c8d8;
+            margin-bottom: 16px;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+
+        /* карточки в стиле референса */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            border-radius: 2px;
+        }
+
+        .card-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .card-text {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* таблицы как в industry-guide */
+        .table-wrap {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        thead tr {
+            background: rgba(108, 99, 255, 0.15);
+        }
+
+        thead th {
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        tbody tr {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        tbody td {
+            padding: 11px 14px;
+            color: #c8c8d8;
+            vertical-align: top;
+        }
+
+        tbody td:first-child {
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        /* Бейджи */
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+        .badge-yes { background: rgba(67,233,123,0.15); color: #43E97B; }
+        .badge-warn { background: rgba(255,190,60,0.15); color: #FFBE3C; }
+        .badge-info { background: rgba(108,99,255,0.2); color: #a09cff; }
+
+        /* Блок highlight (как в оригинале) */
+        .highlight {
+            background: linear-gradient(135deg, rgba(108,99,255,0.12), rgba(108,99,255,0.04));
+            border: 1px solid rgba(108,99,255,0.3);
+            border-left: 3px solid var(--accent);
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 24px 0;
+        }
+        .highlight-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .highlight p {
+            margin: 0;
+            font-size: 13px;
+        }
+
+        /* code block как в industry-guide */
+        .code-block {
+            background: #0A0A18;
+            border: 1px solid rgba(108,99,255,0.2);
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin: 16px 0;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 11px;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+        .code-comment { color: #4a4a6a; }
+        .code-key { color: #a09cff; }
+        .code-fn { color: #FF6584; }
+        .code-str { color: #43E97B; }
+
+        /* списки с иконками */
+        .feature-list {
+            list-style: none;
+            margin: 16px 0;
+        }
+        .feature-list li {
+            display: flex;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 13px;
+        }
+        .feature-icon {
+            font-size: 18px;
+            flex-shrink: 0;
+            width: 28px;
+            text-align: center;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 32px 0;
+        }
+
+        .footer {
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-brand {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .footer-note {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        /* обложка в стиле единого бренда */
+        .cover {
+            width: 100%;
+            min-height: 297mm;
+            background: linear-gradient(135deg, #0D0D1A 0%, #141428 40%, #1a1040 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            page-break-after: always;
+            padding: 60px 50px;
+        }
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -150px; right: -150px;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(108,99,255,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .cover-badge {
+            background: rgba(108,99,255,0.15);
+            border: 1px solid rgba(108,99,255,0.4);
+            color: #a09cff;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+        .cover-icon {
+            font-size: 70px;
+            margin-bottom: 24px;
+            filter: drop-shadow(0 0 20px rgba(108,99,255,0.5));
+        }
+        .cover h1 {
+            font-size: 52px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .cover-sub {
+            font-size: 18px;
+            color: var(--muted);
+            text-align: center;
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+        .cover-stats {
+            display: flex;
+            gap: 32px;
+        }
+        .cover-stat {
+            text-align: center;
+        }
+        .cover-stat-num {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--white);
+        }
+        .cover-stat-num span {
+            color: var(--accent);
+        }
+        .cover-stat-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        @media print {
+            body {
+                background: var(--dark);
+            }
+            .page-break {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- =========================== ОБЛОЖКА в стиле Playable-ADS =========================== -->
+<div class="page">
+  <div class="cover">
+      <div class="cover-badge">CLAUDE CODE · ГЛОБАЛЬНАЯ НАСТРОЙКА</div>
+      <div class="cover-icon">🤖⚡</div>
+      <h1>Claude Code<br>Глобальная настройка и приколы</h1>
+      <p class="cover-sub">Фичи, которые работают везде: хуки, MCP, скиллы, телеграм-бот и автоматизация</p>
+      <div class="cover-stats">
+          <div class="cover-stat"><div class="cover-stat-num"><span>∞</span></div><div class="cover-stat-label">Глобальные навыки</div></div>
+          <div class="cover-stat"><div class="cover-stat-num">10<span>+</span></div><div class="cover-stat-label">MCP серверов</div></div>
+          <div class="cover-stat"><div class="cover-stat-num"><span>📱</span>TG</div><div class="cover-stat-label">Управление из телефона</div></div>
+      </div>
+      <div style="margin-top: 48px; border-top: 1px solid rgba(255,255,255,0.08); width: 80%; padding-top: 20px; display: flex; justify-content: space-between;">
+          <div style="font-size: 12px; color: var(--accent); font-weight: 700;">Playable-ADS Studio</div>
+          <div style="font-size: 11px; color: var(--muted);">Март 2026 · Совместимо с Claude Code</div>
+      </div>
+  </div>
+
+  <!-- =========================== СТРАНИЦА 1 : ОСНОВНЫЕ ПРИКОЛЫ =========================== -->
+  <div class="content">
+      <div class="section-label">01 — Каналы связи</div>
+      <h1>Telegram / Discord / iMessage</h1>
+      <p>Самый сумасшедший прикол — общаться с Claude прямо из телефона, пока сессия живёт на твоём компьютере. Клод отвечает, читает файлы, пишет код — всё через Telegram.</p>
+      
+      <div class="card-grid">
+          <div class="card">
+              <span class="card-icon">📲</span>
+              <div class="card-title">Установка плагина</div>
+              <div class="card-text"><code style="background:#0a0a18; padding:2px 4px; border-radius:4px;">/plugin install telegram@claude-plugins-official</code><br><code style="background:#0a0a18; padding:2px 4px; border-radius:4px;">/telegram:configure BOT_TOKEN</code></div>
+          </div>
+          <div class="card">
+              <span class="card-icon">🚀</span>
+              <div class="card-title">Запуск с каналом</div>
+              <div class="card-text"><code style="background:#0a0a18; padding:2px 4px; border-radius:4px;">claude --channels plugin:telegram@claude-plugins-official</code></div>
+          </div>
+          <div class="card">
+              <span class="card-icon">🔐</span>
+              <div class="card-title">Первый раз — пара кодов</div>
+              <div class="card-text">Отправь сообщение боту → получи код → в терминале <code>/telegram:access pair &lt;код&gt;</code></div>
+          </div>
+      </div>
+
+      <div class="highlight">
+          <div class="highlight-label">Что можно из Telegram</div>
+          <p>✔ Задавать вопросы по коду &nbsp;|&nbsp; ✔ Запускать задачи &nbsp;|&nbsp; ✔ Получать уведомления о завершении &nbsp;|&nbsp; ✔ CI упал? Claude пришлёт в телегу.<br><span style="color:var(--muted); font-size:11px;">⚠️ Требует Bun runtime + вход через claude.ai (не API key)</span></p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-label">02 — Автоматизация без CI/CD</div>
+      <h2>Hooks — события, триггеры, shell-команды</h2>
+      <p>Хуки живут в <code style="background:#0a0a18; padding:2px 6px; border-radius:6px;">~/.claude/settings.json</code> и запускаются на события: <strong>SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Notification, PreCompact, Stop</strong>.</p>
+
+      <div class="table-wrap">
+          <table>
+              <thead><tr><th>Событие</th><th>Когда срабатывает</th><th>Пример использования</th></tr></thead>
+              <tbody>
+                  <tr><td>SessionStart</td><td>Начало/возобновление сессии</td><td>Инжектить контекст из Obsidian</td></tr>
+                  <tr><td>PreToolUse</td><td>До выполнения инструмента</td><td><span class="badge badge-warn">Заблокировать</span> опасные команды (rm -rf, sudo)</td></tr>
+                  <tr><td>PostToolUse</td><td>После успешного инструмента</td><td>Авто-форматирование, запуск тестов</td></tr>
+                  <tr><td>Notification</td><td>Claude ждёт внимания</td><td>Desktop уведомления (macOS)</td></tr>
+              </tbody>
+          </table>
+      </div>
+
+      <div class="code-block">
+          <span class="code-comment">// Пример: уведомление на macOS когда Claude закончил</span><br>
+          {<br>
+          &nbsp;&nbsp;<span class="code-key">"hooks"</span>: {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">"Notification"</span>: [{<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">"matcher"</span>: <span class="code-str">""</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">"hooks"</span>: [{<span class="code-key">"type"</span>: <span class="code-str">"command"</span>, <span class="code-key">"command"</span>: <span class="code-str">"osascript -e 'display notification \"Claude закончил\" with title \"Claude Code\"'"</span>}]<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;}]<br>
+          &nbsp;&nbsp;}<br>
+          }
+      </div>
+
+      <div class="code-block">
+          <span class="code-comment">// Защита .env файлов — запрет на редактирование</span><br>
+          <span class="code-fn">PreToolUse</span> → matcher <span class="code-str">"Edit|Write"</span> → <span class="code-key">bash</span> ~/.claude/hooks/protect-env.sh<br>
+          <span class="code-comment">// exit 2 блокирует операцию</span>
+      </div>
+
+      <div class="highlight">
+          <div class="highlight-label">Логика выхода хуков</div>
+          <p><strong>Exit 0</strong> — разрешить, stdout → в контекст Claude. <strong>Exit 2</strong> — заблокировать. <strong>JSON вывод</strong> — структурированное управление (<code>{"behavior": "allow"}</code>).</p>
+      </div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="page">
+  <div class="content">
+      <div class="section-label">03 — MCP Серверы</div>
+      <h2>Подключение внешних систем через Model Context Protocol</h2>
+      <p>Глобальный конфиг: <code>~/.claude/mcp.json</code> (или локальный <code>.claude/mcp.json</code>). Расширяет Claude доступом к базам данных, GitHub, Slack, Linear и др.</p>
+
+      <div class="card-grid">
+          <div class="card"><span class="card-icon">🐙</span><div class="card-title">GitHub MCP</div><div class="card-text">Поиск по репам, создание PR, комментарии к коду</div></div>
+          <div class="card"><span class="card-icon">💬</span><div class="card-title">Slack</div><div class="card-text">Отправка сообщений, чтение каналов</div></div>
+          <div class="card"><span class="card-icon">🐘</span><div class="card-title">PostgreSQL</div><div class="card-text">Прямые SQL-запросы из чата</div></div>
+          <div class="card"><span class="card-icon">📊</span><div class="card-title">Sentry / Linear</div><div class="card-text">Мониторинг ошибок и управление задачами</div></div>
+      </div>
+
+      <div class="code-block">
+          <span class="code-comment">// Пример mcp.json с GitHub и БД</span><br>
+          {<br>
+          &nbsp;&nbsp;<span class="code-key">"mcpServers"</span>: {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">"github"</span>: {<span class="code-key">"type"</span>: <span class="code-str">"http"</span>, <span class="code-key">"url"</span>: <span class="code-str">"https://mcp.github.com"</span>},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">"postgres"</span>: {<span class="code-key">"type"</span>: <span class="code-str">"stdio"</span>, <span class="code-key">"command"</span>: <span class="code-str">"node"</span>, <span class="code-key">"args"</span>: [<span class="code-str">"mcp-pg/index.js"</span>], <span class="code-key">"env"</span>: {<span class="code-key">"DATABASE_URL"</span>: <span class="code-str">"postgres://..."</span>}}<br>
+          &nbsp;&nbsp;}<br>
+          }
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-label">04 — Slash Commands + Skills</div>
+      <h2>Custom Skills: персональные команды</h2>
+      <p>Скиллы живут в <code>~/.claude/skills/&lt;name&gt;/SKILL.md</code> (глобально) или в <code>.claude/skills/</code> проекта. Claude сам поймёт когда их использовать, или вызывай вручную через <code>/deploy</code>, <code>/pr-review</code>.</p>
+
+      <div class="code-block">
+          <span class="code-comment">---</span><br>
+          name: pr-review<br>
+          description: Ревью текущего PR<br>
+          <span class="code-key">context</span>: fork &nbsp;&nbsp;<span class="code-comment"># изолированный сабагент</span><br>
+          <span class="code-key">allowed-tools</span>: Bash, Read<br>
+          <span class="code-comment">---</span><br><br>
+          Diff: <span class="code-str">!`gh pr diff`</span><br>
+          Комментарии: <span class="code-str">!`gh pr view --comments`</span><br>
+          Сделай ревью кода, укажи на уязвимости.
+      </div>
+
+      <p><strong>Динамический контекст:</strong> конструкция <code>!`команда`</code> выполнит shell и подставит вывод прямо в промпт. Поддерживаются аргументы: <code>$0, $1...</code> при вызове <code>/migrate Button React Vue</code>.</p>
+
+      <div class="highlight">
+          <div class="highlight-label">Frontmatter опции</div>
+          <p><code>disable-model-invocation: true</code> — только ручной вызов. <code>model: claude-opus-4-6</code> — переопределить модель. <code>context: fork</code> — изолированный агент для сложных задач.</p>
+      </div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="page">
+  <div class="content">
+      <div class="section-label">05 — Персистентная память</div>
+      <h2>Auto-Memory: Claude запоминает между сессиями</h2>
+      <p>Хранится в <code>~/.claude/projects/&lt;project-id&gt;/memory/</code>. Автоматически сохраняет архитектурные решения, твои предпочтения ("не мокай базу"), статус проекта. Управление через <code>/memory</code>.</p>
+
+      <ul class="feature-list">
+          <li><span class="feature-icon">🧠</span><div><strong>user</strong> — кто ты, как работаешь, твои инструменты</div></li>
+          <li><span class="feature-icon">📌</span><div><strong>project</strong> — контекст текущего репозитория</div></li>
+          <li><span class="feature-icon">💡</span><div><strong>feedback</strong> — что нравится, что раздражает (авто-обучение)</div></li>
+          <li><span class="feature-icon">🔗</span><div><strong>reference</strong> — ссылки на внешние системы, доки, API</div></li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <div class="section-label">06 — Расписание задач</div>
+      <h2>Scheduled Tasks (cloud & desktop)</h2>
+      <div class="card-grid">
+          <div class="card"><span class="card-icon">🔄</span><div class="card-title">Loop в сессии</div><div class="card-text"><code>/loop 5m проверь статус деплоя</code> — повтор каждые 5 минут</div></div>
+          <div class="card"><span class="card-icon">☁️</span><div class="card-title">Cloud (Anthropic)</div><div class="card-text"><code>/schedule create "health check" --cron "0 */4 * * *"</code> — durable, без твоей машины, интервал ≥ 1ч</div></div>
+          <div class="card"><span class="card-icon">💻</span><div class="card-title">Desktop (macOS/Windows)</div><div class="card-text">Минимальный интервал 1 минута, пока устройство включено.</div></div>
+      </div>
+
+      <div class="code-block">
+          <span class="code-comment"># Пример: каждые 30 секунд смотреть логи</span><br>
+          <span class="code-fn">/loop</span> 30s следи за логами ошибок в папке logs/
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-label">07 — Глобальные настройки</div>
+      <h2>settings.json и keybindings</h2>
+      <p><strong>~/.claude/settings.json</strong> — модель, пермишены, env, хуки. Пример разрешений: <code>Bash(npm *)</code>, <code>Read(//Users/username/projects/**)</code>, <code>Edit(**/src/**)</code>.</p>
+      <div class="code-block">
+          {<br>
+          &nbsp;&nbsp;<span class="code-key">"model"</span>: <span class="code-str">"claude-opus-4-6"</span>,<br>
+          &nbsp;&nbsp;<span class="code-key">"permissions"</span>: {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">"allow"</span>: [<span class="code-str">"Bash(npm *)"</span>, <span class="code-str">"Read(//Users/**)"</span>],<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">"deny"</span>: [<span class="code-str">"Bash(rm -rf *)"</span>]<br>
+          &nbsp;&nbsp;}<br>
+          }
+      </div>
+      <p>Keybindings в <code>~/.claude/keybindings.json</code> (создаётся через <code>/keybindings-help</code>). Полезные действия: <code>chat:stash</code>, <code>chat:modelPicker</code>, <code>history:search</code>.</p>
+
+      <div class="highlight">
+          <div class="highlight-label">Маленькие приколы</div>
+          <p><code>/vim</code> — полноценный vim mode. Extended thinking: <kbd>Cmd+T</kbd> или слово <code>ultrathink</code> (Opus). <code>/statusline</code> — кастомная нижняя панель с git, стоимостью. Claude автоматически ищет скиллы в монорепозиториях (родительские директории).</p>
+      </div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="page">
+  <div class="content">
+      <div class="section-label">08 — Реальная конфигурация (мой опыт)</div>
+      <h2>Текущая настройка — пример production-grade окружения</h2>
+      <ul class="feature-list">
+          <li><span class="feature-icon">🎣</span><div><strong>Hooks:</strong> SessionStart → загрузка контекста из Obsidian; PostToolUse → логирование изменений; PreCompact → сохранение состояния; Stop → заполнение session log.</div></li>
+          <li><span class="feature-icon">📂</span><div><strong>Permissions:</strong> чтение FlexGlass-Docs (Architecture + Notes + всё остальное).</div></li>
+          <li><span class="feature-icon">⚙️</span><div><strong>Активные скиллы:</strong> <code>/update-config</code>, <code>/simplify</code> (ревью кода), <code>/claude-api</code> (документация), <code>/schedule</code>.</div></li>
+      </ul>
+
+      <div class="table-wrap">
+          <table>
+              <thead><tr><th>Событие</th><th>Действие</th><th>Почему полезно</th></tr></thead>
+              <tbody>
+                  <tr><td>SessionStart (compact)</td><td>Инжект правил: Next.js 16 + PocketBase, токены не списывать</td><td>После сжатия контекста Claude не забывает критичные ограничения</td></tr>
+                  <tr><td>PreToolUse</td><td>Блокировка записи в .env, production конфиги</td><td>Безопасность без лишних мыслей</td></tr>
+                  <tr><td>PostToolUse (Edit)</td><td>Авто prettier + логирование изменений</td><td>Код всегда отформатирован, аудит правок</td></tr>
+              </tbody>
+          </table>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-label">Быстрый справочник</div>
+      <div class="card-grid">
+          <div class="card">
+              <div class="card-title">⚡ CLI флаги</div>
+              <div class="card-text"><code>claude --channels plugin:telegram</code><br><code>--permission-mode acceptEdits</code><br><code>--resume</code> — последняя сессия</div>
+          </div>
+          <div class="card">
+              <div class="card-title">📁 Важные пути</div>
+              <div class="card-text"><code>~/.claude/settings.json</code><br><code>~/.claude/mcp.json</code><br><code>~/.claude/skills/</code><br><code>~/.claude/projects/</code></div>
+          </div>
+          <div class="card">
+              <div class="card-title">🎯 Советы</div>
+              <div class="card-text">Используй <code>/memory</code> для долгосрочного контекста. Сочетай хуки + MCP для автоматического деплоя. Skills с <code>!`shell`</code> экономят часы.</div>
+          </div>
+      </div>
+
+      <div class="footer">
+          <div class="footer-brand">Playable-ADS Studio · Claude Power User Kit</div>
+          <div class="footer-note">Основано на документации Anthropic + реальный опыт · Март 2026</div>
+      </div>
+  </div>
+</div>
+</body>
 </html>
